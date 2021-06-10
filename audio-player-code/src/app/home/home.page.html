@@ -1,0 +1,140 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Ionic Jukebox
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="wrapper">
+    <div class="playback">
+      <span class="preloader" *ngIf="isLoading">
+        <img src="/assets/icon/preloader.gif">
+      </span>
+      <span class="playback__details">
+        <span class="playback__details--track">{{ trackName }}</span>
+        <span class="playback__details--artist">{{ artistName }}</span>
+      </span>
+      <span class="playback__time" *ngIf="isPlaying">{{ currentTime }}</span>
+      <div class="progress" #track>
+        <div class="progress__scrubber" #scrubber (mousedown)="onDragDown($event)" (mousemove)="onDragMove($event)" (mouseout)="onDragMove($event)" (mouseup)="onDragRelease($event)"></div>
+        <div class="progress__bar" #progress></div>
+      </div>
+    </div>
+
+
+
+    <div class="buttons">
+      <ion-button
+        fill="clear"
+        (click)="previousTrack()" 
+        [disabled]="currentTrack === 0">
+        <ion-icon slot="icon-only" name="play-back-circle-outline"></ion-icon>
+      </ion-button>
+
+
+      <!--
+        Stops playback of audio track currently playing
+      -->
+      <ion-button 
+          fill="clear"
+          display="block" 
+          [disabled]="!isPlaying"
+          (click)="stopPlayback()">
+          <ion-icon slot="icon-only" name="stop-circle-outline"></ion-icon>
+      </ion-button>
+
+
+      <ion-button
+        fill="clear"
+        (click)="nextTrack()"
+        [disabled]="!isPlaying || (currentTrack + 1) === tracks.length">
+        <ion-icon slot="icon-only" name="play-forward-circle-outline"></ion-icon>
+      </ion-button>
+
+
+
+      <div class="controls">
+
+        <div class="controls__control">
+          <ion-checkbox [(ngModel)]="isReversed" (ionChange)="isPlaybackReversed($event)"></ion-checkbox>
+          <ion-label>Reverse</ion-label>
+        </div>
+
+        <div class="controls__control">
+          <ion-checkbox [(ngModel)]="tracksAreLooped" (ionChange)="loopTracks($event)"></ion-checkbox>
+          <ion-label>Loop All</ion-label>
+        </div>
+
+        <div class="controls__control">
+          <ion-checkbox (ionChange)="shuffle($event)"></ion-checkbox>
+          <ion-label>Shuffle</ion-label>
+        </div>
+
+        <div class="controls__control">
+          <ion-checkbox (ionChange)="mute($event)" [disabled]="!isPlaying"></ion-checkbox>
+          <ion-label>Mute</ion-label>
+        </div>
+      </div>
+
+      
+    </div>
+
+
+    <!--
+      Manage volume change of audio playback
+    -->   
+    <ion-item>
+        Volume: 
+        <ion-range 
+          pin = "true"
+          step="0.01" 
+          snaps="false"
+          min="0" 
+          value="1"
+          max="3.4" 
+          [disabled]="!isPlaying"
+          [(ngModel)]="volume"
+          (ionChange)="changeVolume($event)">>
+          <ion-icon range-left small name="0"></ion-icon>
+          <ion-icon range-right name="1"></ion-icon>
+        </ion-range>
+    </ion-item>
+
+
+    <!--
+      Manage stereo balance of audio playback
+    -->   
+    <ion-item>
+        Balance: 
+        <ion-range 
+          pin = "true"
+          step="0.01" 
+          snaps="false"
+          min="-1" 
+          value="0"
+          max="1" 
+          [disabled]="!isPlaying"
+          [(ngModel)]="panning"
+          (ionChange)="changePanning($event)">>
+          <ion-icon range-left small name="-1"></ion-icon>
+          <ion-icon range-right name="1"></ion-icon>
+        </ion-range>
+    </ion-item>
+
+
+    <!--
+      Iterate through audio tracks listed in component
+      class, embed data in button and allow track to be
+      selected/played
+    --> 
+    <ion-list> 
+      <ion-item *ngFor="let track of tracks; let index = index"
+          (click)="loadSound(track.track, index)">
+          {{ track.artist}} - {{ track.name }}
+      </ion-item>
+    </ion-list> 
+  </div>
+</ion-content>

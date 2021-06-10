@@ -1,0 +1,12 @@
+<ion-item>        
+  <div 
+  *ngIf="filtersObj$ | async; let filters;">
+    <ion-select 
+      placeholder="Filter movies by genre..."   
+      (ionChange)="filterMoviesByselectedGenre($event)">
+      <ion-select-option 
+        *ngFor="let filter of filters" 
+        value="{{ filter }}">{{ filter }}</ion-select-option>
+    </ion-select>
+  </div>
+</ion-item>

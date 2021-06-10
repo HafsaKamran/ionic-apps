@@ -1,0 +1,54 @@
+<ion-card>
+  <img *ngIf="film.backdrop_path" [src]="film.backdrop_path">
+  <ion-card-header>
+    <ion-card-title>{{ film.title }}</ion-card-title>
+    <ion-card-subtitle>Released: {{ film.release_date | date: 'fullDate' }}</ion-card-subtitle>
+    <ion-card-subtitle>
+      <ion-buttons>
+        <ion-button 
+          *ngFor="let genre of film.genres"
+          color="primary"
+          fill="solid"
+          expand="block"
+          disabled>{{ genre }}</ion-button>
+      </ion-buttons>
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    {{ film.overview }}
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngIf="section != 'Favourites'">
+          <ion-item lines="none">
+            <ion-label>Save as Favourite?</ion-label>
+            <ion-checkbox  
+              color="primary"
+              (click)="saveAsFavourite(film)"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+            <ion-button 
+              color="secondary"
+              expand="full"
+              fill="solid"
+              (click)="moreInformation(film)">
+              <ion-label>More Information</ion-label>
+              <ion-icon slot="end" name="information-circle-outline"></ion-icon>
+            </ion-button> 
+        </ion-col>
+        <ion-col>
+            <ion-button 
+              color="danger"
+              expand="full"
+              fill="solid"
+              (click)="remove(film)">
+              <ion-label>Remove?</ion-label>
+              <ion-icon slot="end" name="trash-outline"></ion-icon>
+            </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Your Personal Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <form #f="ngForm">
+    <ion-list>
+
+      <ion-item>
+        <ion-label>Your Name</ion-label>
+        <ion-input 
+            type="text"
+            name="name" 
+            ngModel></ion-input>		    	
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Your Email address</ion-label>
+        <ion-input 
+          type="email" 
+          name="email" 
+          ngModel></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Favourite Platform</ion-label>
+        <ion-select 
+          placeholder="Select your platform"
+          name="platform"
+          ngModel>
+          <ion-select-option value="Android">Android</ion-select-option>
+          <ion-select-option value="iOS">iOS</ion-select-option>
+        <ion-select-option value="WP">Windows Phone</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button
+        color="primary" 
+        expand="block" 
+        (click)="saveDetails(f.value)">Save Details</ion-button>
+    </ion-list>
+  </form>
+
+</ion-content>

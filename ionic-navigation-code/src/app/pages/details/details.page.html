@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ul>
+    <li *ngFor="let item of items"> 
+      {{ item.title }}
+      <ul> 
+        <li *ngFor="let strip of item.strips">{{ strip.title }}</li>
+      </ul> 
+    </li>
+  </ul>
+</ion-content>

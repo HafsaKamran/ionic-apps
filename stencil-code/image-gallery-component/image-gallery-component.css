@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.panel {
+  display: flex;
+  flex-flow: row;
+  padding: 0.5em;
+}
+
+.gallery {
+  display: flex;
+  flex-flow: row wrap;
+  width: 50%;
+}
+
+.image {
+  width: 32%;
+  margin: 0 0 0 1%;
+}
+
+.information {
+  display: flex;
+  flex-flow: column;
+  width: 50%;
+  padding: 0 0 0 1.5em;
+  background: rgba(240, 240, 240,1);
+}

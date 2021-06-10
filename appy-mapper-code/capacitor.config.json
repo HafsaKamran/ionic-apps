@@ -1,0 +1,8 @@
+{
+  "appId": "com.saintsatplay.appymapper",
+  "appName": "appyMapper",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

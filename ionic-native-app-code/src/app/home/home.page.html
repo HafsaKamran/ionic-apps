@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Ionic Image Capture
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form *ngIf="!imageCaptured"
+    [formGroup]="form">
+    <ion-list>
+	
+
+      <ion-item margin-bottom>
+      <ion-label>Source Type</ion-label>
+      <ion-select formControlName="sourceType">
+          <ion-select-option value="0">Photolibrary</ion-select-option>
+          <ion-select-option value="1">Camera</ion-select-option>
+          <ion-select-option value="2">Saved Photoalbum</ion-select-option>
+      </ion-select>
+      </ion-item>
+
+
+      <ion-item margin-bottom> 
+        <ion-label text-left>Image Width</ion-label>
+        <ion-range 
+          formControlName="imageSize" 
+          min="100" 
+          max="500" 
+          step="100" 
+          snaps="true" 
+          secondary 
+          (ionChange)="captureImageWidth($event, form.controls['imageSize'])">
+          <ion-label slot="start">100</ion-label>
+            <ion-label slot="end">500</ion-label>
+        </ion-range>		 	
+      </ion-item>
+
+
+      <ion-button
+        color="primary" 
+        text-center 
+        expand="full" 
+        [disabled]="!form.valid" 
+        (click)="captureImage(form.value)">Capture Image</ion-button>
+    </ion-list>
+   </form>
+
+   
+   <div *ngIf="imageCaptured">
+   	  <p>Returned image:</p>
+   	  <img [src]="capturedImage">
+   	  <ion-button color="primary" text-center (click)="retakeImageCapture()">Back</ion-button>
+   </div>
+
+
+</ion-content>

@@ -1,0 +1,123 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+/* Styles shared across home page and product pages */
+.page,
+.box {
+    img{	
+        display: block;
+        padding: 1em 0 1em 0;
+        margin: 0 auto;
+    }
+
+    h1 {
+        margin-top: 50px;
+        font-size: 1.8em;
+        font-weight: bold;
+        color: var(--heading-color);
+        text-align: center;
+    }
+
+    ul {
+        padding: 0 0 50px 15px;
+        margin: 0;
+    }
+
+    p,
+    li {
+        font-size: 1em;
+        color: var(--white-body-text);
+        line-height: 1.4em;
+        text-align: left;
+        padding-bottom: 10px;
+    }
+ }
+
+ .box {
+    position: relative;
+	height: 270px;
+    padding: 50px 10px 10px 10px;
+
+
+    p {
+        text-align: center;
+    }
+}
+
+.description {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	padding: 1em 1em 0.5em 1em;
+	background-color: var(--description-box-background);
+
+	h1 {
+		font-size: 1em;
+		font-weight: bold;
+		font-family: Verdana;
+		text-align: center;
+		color: var(--heading-color);
+	}
+
+	p {
+		font-size: 0.9em;
+		font-family: Verdana;
+		text-align: center;
+		color: var(--white-body-text);
+	}
+
+
+	button {
+		font-size: 0.9em;
+	}
+}
+
+.alpha-male {
+	background-color: var(--alpha-male);
+}
+
+.climate-hero {
+	background-color: var(--climate-hero);
+}
+
+.grand-theft-noughto {
+	background-color: var(--grand-theft-noughto);
+}
+
+.happy-families {
+	background-color: var(--happy-families);		
+}
+
+.king-for-a-day {
+	background-color: var(--king-for-a-day);
+}
+
+.world-traveller {
+	background-color: var(--world-traveller);
+}
+    

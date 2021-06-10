@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Your Personal Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <form 
+      [formGroup]="form">
+      <ion-list>
+	<ion-item margin-bottom>
+	   <ion-label>Your Name</ion-label>
+	   <ion-input 
+	      type="text" 
+	      [formControl]="form.controls['name']"></ion-input>   	
+	</ion-item>
+
+         <ion-item margin-bottom>
+	   <ion-label>Your Email address</ion-label>
+	   <ion-input 
+	      type="email" 
+	      [formControl]="form.controls['email']"></ion-input>
+	</ion-item>
+
+    <ion-item margin-bottom>
+	   <ion-label>Favourite Platform</ion-label>
+	   <ion-select [formControl]="form.controls['platform']">
+	      <ion-select-option value="Android">Android</ion-select-option>
+	      <ion-select-option value="iOS">iOS</ion-select-option>
+	      <ion-select-option value="WP">Windows Phone</ion-select-option>
+	      <ion-select-option value="Other">Other</ion-select-option>
+	   </ion-select>
+    </ion-item>
+
+	<ion-button
+	   color="primary" 
+       text-center 
+       expand="full" 
+       [disabled]="!form.valid" 
+       (click)="saveDetails(form.value)">Save Details</ion-button>
+      </ion-list>
+   </form>
+
+   <div *ngIf="form.controls['name'].dirty && !form.controls['name'].valid">
+	Your name =must contain a minimum of 4 characters.
+   </div>
+
+   <div *ngIf="form.controls['email'].dirty && !form.controls['email'].valid">
+      You must enter a valid, properly formatted e-mail address
+   </div>
+
+</ion-content>

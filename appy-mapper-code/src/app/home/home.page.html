@@ -1,0 +1,109 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      AppyMapper
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div 
+	   class="map" 
+	   leaflet 
+	   [leafletCenter]="mapCenter"
+	   [leafletZoom]="zoomLevel"
+	   [leafletLayers]="leafletOptions" 
+	   (leafletMapReady)="onMapReady($event)">
+	   <div *ngFor="let l of markers" [leafletLayer]="l"></div>
+	</div>
+
+  <span class="map-information">{{ summary }}</span>
+  
+
+
+  <ion-card>
+  		
+  		
+    <ion-card-header>    		 
+      <ion-button
+        color="primary"
+        class="ion-text-center"
+        expand="block" 
+        (click)="displayLocationFilters()">{{ filtersText }}</ion-button>
+    </ion-card-header>
+
+
+    <div *ngIf="displayFilters" padding>
+      <ion-segment [(ngModel)]="filters">
+        <ion-segment-button value="country">
+            Country
+        </ion-segment-button>
+        <ion-segment-button value="byNearest">
+            Nearest
+        </ion-segment-button>		    	
+      </ion-segment>
+  
+
+      
+      <div class="filters" [ngSwitch]="filters">
+
+        <ion-list>
+          <ion-item 
+             *ngSwitchCase="'country'">
+            <ion-label>Please select a country</ion-label>
+            <ion-select 
+              [(ngModel)]="byCountry" 
+              (ionChange)="filterLocationsByCountry(byCountry)">
+            <ion-select-option 
+               *ngFor="let country of countries$ | async" 
+               value="{{ country.id }}">{{ country.country }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+
+
+          <ion-item *ngSwitchCase="'byNearest'">
+            <ion-label>Nearest store to me:</ion-label>
+            <ion-select 
+              [(ngModel)]="byNearest" 
+              (ionChange)="filterLocationsByNearest(byNearest)">
+              <ion-select-option value="50">50 Miles</ion-select-option>
+              <ion-select-option value="100">100 Miles</ion-select-option>
+              <ion-select-option value="250">250 Miles</ion-select-option>
+              <ion-select-option value="500">500 Miles</ion-select-option>
+              <ion-select-option value="1000">1000 Miles</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+      </div>
+
+
+
+      <ion-button 
+        class="reset"
+        color="secondary"
+        class="ion-text-center"
+        expand="block" 
+        (click)="renderAllStoreLocations()">Display ALL Stores</ion-button>
+    </div>
+
+  </ion-card>
+
+  
+  <div *ngIf="locationsPresent">
+    <ion-card 
+		     *ngFor="let location of locations$ | async">
+			<ion-card-header>
+				<ion-item class="heading">
+		    		<ion-icon ios="logo-apple" md="logo-apple" slot="start"></ion-icon>
+		    		<h2>{{ location.name }}</h2>
+		    	</ion-item>
+		  	</ion-card-header>
+		  	<ion-card-content>
+		    	<div class="location-address" [innerHTML]="location.address"></div>
+		  	</ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
