@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Apple Store Locations
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+    <ion-card *ngFor="let value of values$ | async">
+      <ion-card-header>
+        <ion-item class="heading">
+            <ion-icon ios="logo-apple" md="logo-apple" slot="start"></ion-icon>
+          <h2>{{ value.name }}</h2>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>{{ value.country }}</h2>
+        <div [innerHTML]="value.address"></div>
+        <p>Latitude: {{ value.lat }}</p>
+        <p>Longitude: {{ value.lng }}</p>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
