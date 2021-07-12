@@ -2,7 +2,11 @@ export const environment = {
   production: true,
   keys: {
     api: {
-      spoonacular: 'a6f24909bba14bd09fb8d4b7bea69e90'
+      movieDb: '711135627b88fbde1290b7bc5556948a'
+    },
+    storage: {
+      myMovies: 'MyFavouriteMovies',
+      savedMovies: 'MySavedMovies'
     }
   }
 };

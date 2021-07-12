@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Credits</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  [scrollEvents]="true">
+  <ion-list *ngIf="creditsObj | async; let credits">
+    <ion-card *ngFor="let credit of credits">
+      <ion-list>
+        <ion-item-group>
+          <ion-item-divider #cast id="cast">
+            <ion-label>Cast</ion-label>
+            <ion-button
+              slot="end"
+              color="primary"
+              fill="solid"
+              expand="full"
+              size="small"
+              (click)="scrollToListSection('Crew')">Crew details
+              <ion-icon slot="end" name="people-outline"></ion-icon>
+            </ion-button>
+          </ion-item-divider>
+          <ion-item *ngFor="let cast of credit.cast">
+            <ion-thumbnail slot="start">
+              <img [src]="cast.profile_path">
+            </ion-thumbnail>
+            <ion-label>
+              <h1>{{ cast.name }}</h1>
+              <p>{{ cast.character }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-item-group>
+        <ion-item-group>
+          <ion-item-divider #crew id="crew">
+            <ion-label>Crew</ion-label>
+            <ion-button
+              slot="end"
+              color="primary"
+              fill="solid"
+              expand="full"
+              size="small"
+              (click)="scrollToListSection('Cast')">
+              Cast details
+              <ion-icon slot="end" name="people-outline"></ion-icon>
+            </ion-button>
+          </ion-item-divider>
+          <ion-item *ngFor="let crew of credit.crew">
+            <ion-thumbnail slot="start">
+              <img [src]="crew.profile_path">
+            </ion-thumbnail>
+            <ion-label>
+              <h1>{{ crew.name }}</h1>
+              <p>{{ crew.department }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
+    </ion-card>
+  </ion-list>
+
+  <ion-button
+    color="primary"
+    fill="solid"
+    expand="full"
+    (click)="scrollToTop()">Top</ion-button>
+
+</ion-content>
