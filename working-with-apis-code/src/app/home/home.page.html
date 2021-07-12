@@ -1,0 +1,143 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Food API
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+          expand="block"
+          fill="solid"
+          size="large"
+          color="danger"
+          class="ion-text-center"
+          (click)="getRandomRecipes()">Get random recipes</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+
+      <!-- Search form -->
+      <form
+      [formGroup]="form"
+      (ngSubmit)="searchRecipes(form.value)">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label>Search by:</ion-label>
+              </ion-item>              
+            </ion-col>
+            <ion-col>
+
+              <!-- Type of vitamin to search recipes by -->
+              <ion-select placeholder="Search by Vitamin" [formControl]="form.controls['nutrient']">
+                <ion-select-option value="minVitaminA">Vitamin A</ion-select-option>
+                <ion-select-option value="minVitaminB1">Vitamin B1</ion-select-option>
+                <ion-select-option value="minVitaminB2">Vitamin B2</ion-select-option>
+                <ion-select-option value="minVitaminB3">Vitamin B3</ion-select-option>
+                <ion-select-option value="minVitaminB5">Vitamin B5</ion-select-option>
+                <ion-select-option value="minVitaminB6">Vitamin B6</ion-select-option>
+                <ion-select-option value="minVitaminB12">Vitamin B12</ion-select-option>
+                <ion-select-option value="minVitaminC">Vitamin C</ion-select-option>
+                <ion-select-option value="minVitaminD">Vitamin D</ion-select-option>
+                <ion-select-option value="minVitaminE">Vitamin E</ion-select-option>
+                <ion-select-option value="minVitaminK">Vitamin K</ion-select-option>
+              </ion-select>
+            </ion-col>
+
+
+            <ion-col>
+
+              <!-- Minimum quantity of vitamin that a recipe must contain -->
+              <ion-select placeholder="Minimum value" [formControl]="form.controls['value']">
+                <ion-select-option value="100">100</ion-select-option>
+                <ion-select-option value="500">500</ion-select-option>
+                <ion-select-option value="1000">1000</ion-select-option>
+                <ion-select-option value="2000">2000</ion-select-option>
+                <ion-select-option value="5000">5000</ion-select-option>
+                <ion-select-option value="10000">10000</ion-select-option>
+              </ion-select>
+            </ion-col>
+
+
+            <ion-col>
+
+              <!-- Maximum number of recipes to display in search results -->
+              <ion-select placeholder="Max results" [formControl]="form.controls['results']">
+                <ion-select-option value="10">10</ion-select-option>
+                <ion-select-option value="20">20</ion-select-option>
+                <ion-select-option value="50">50</ion-select-option>
+                <ion-select-option value="100">100</ion-select-option>
+              </ion-select>
+            </ion-col>
+
+            <ion-col>
+              <ion-button
+                type="submit"
+                expand="block"
+                color="primary"
+                class="ion-text-center"
+                [disabled]="!form.valid">Search</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        
+      </form>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <!-- Display of actual recipes - if any have been returned -->
+  <ion-list *ngIf="items$ | async as records; else loading">
+
+    <!-- If returned data has records-->
+    <div *ngIf="records.length > 0; else empty">
+      <ion-item *ngFor="let item of records">
+        <ion-img src="https://spoonacular.com/recipeImages/{{ item.id }}-312x231.{{ item.imageType }}" slot="start"></ion-img>
+        <ion-grid>
+          <ion-row>
+            <ion-col>{{ item.title }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Calories:</ion-col>
+            <ion-col>{{ item.calories }}</ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>Protein:</ion-col>
+            <ion-col>{{ item.protein }}</ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>Carbohydrates:</ion-col>
+            <ion-col>{{ item.carbs }}</ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>Fats:</ion-col>
+            <ion-col>{{ item.fat }}</ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+    </div>
+
+    <!-- If returned data has no records -->
+    <ng-template #empty>
+      <ion-item>
+        <ion-label>No recipes were returned</ion-label>
+      </ion-item>    
+    </ng-template>
+  </ion-list>
+
+  <!-- Display whilst waiting for API call to output results -->
+  <ng-template #loading>
+    <ion-item>
+      <ion-label>Loading...</ion-label>
+    </ion-item>    
+  </ng-template>
+</ion-content>
