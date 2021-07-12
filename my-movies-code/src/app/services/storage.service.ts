@@ -15,8 +15,8 @@
  * @packageDocumentation
  */
 import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins;
+import { Storage } from '@capacitor/storage';
+// const { Storage } = Plugins;
 
 
 /**
