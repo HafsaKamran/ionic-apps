@@ -20,7 +20,7 @@ const routes: Routes = [
       details : DetailsResolverService
     },
     canActivate: [DetailsGuardGuard],
-    loadChildren: './pages/details/details.module#DetailsPageModule'
+    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
   },
   {
     path: 'details',
