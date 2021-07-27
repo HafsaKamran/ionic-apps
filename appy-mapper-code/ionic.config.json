@@ -1,0 +1,7 @@
+{
+  "name": "appy-mapper",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -68,7 +68,10 @@ export class PlacesService {
    * @param {HttpClient} http
    * @memberof PlacesService
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadCountries();
+    this.loadLocations();
+  }
 
 
   /**
@@ -95,7 +98,7 @@ export class PlacesService {
           });
         });
       })
-    ).subscribe();
+      ).subscribe();
   }
 
 

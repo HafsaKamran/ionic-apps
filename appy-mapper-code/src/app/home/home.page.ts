@@ -21,8 +21,7 @@ import { Country } from '../interfaces/countries';
 import { Location } from '../interfaces/locations';
 import { icon, latLng, Layer, marker, tileLayer } from 'leaflet';
 import { environment } from '../../environments/environment';
-import { Plugins } from '@capacitor/core';
-const { Geolocation } = Plugins;
+import { Geolocation } from '@capacitor/geolocation';
 
 /**
  * @ignore
@@ -279,12 +278,12 @@ export class HomePage implements OnInit, AfterViewInit {
   private initialiseMap(lat: number,
                         lng: number,
                         zoom: number): void {
-    this.leafletOptions = [tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+    this.leafletOptions = [tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
     {
       // tslint:disable-next-line:max-line-length
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      id: 'mapbox.streets',
+      id: 'mapbox/streets-v11',
       accessToken: this.accessToken
     })];
 
@@ -334,7 +333,6 @@ export class HomePage implements OnInit, AfterViewInit {
     this.locations$ = from(this.manager.getLocations())
                 .pipe(
                   tap((data: Array<Location>) => {
-                    console.dir(data);
                     this.stores = data;
                     this.renderLocations(data, null, null, null);
                     this.summary      = `${data.length} Apple Stores`;

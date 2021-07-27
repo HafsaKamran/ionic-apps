@@ -11,8 +11,8 @@
  * @class StorageService
  * @packageDocumentation
  */
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { Injectable, OnInit} from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 
 /**
@@ -29,7 +29,9 @@ export class StorageService {
    * @param {Storage} storage
    * @memberof StorageService
    */
-  constructor(public storage: Storage) { }
+  constructor(public storage: Storage) {
+    this.init();
+  }
 
 
   /**
@@ -41,7 +43,7 @@ export class StorageService {
    * @memberof StorageService
    */
   public async init(): Promise<any> {
-    await this.storage.ready()
+    await this.storage.create()
     .then(() => {
       return true;
     })

@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   keys: {
     maps: {
-      token: 'pk.eyJ1Ijoic2FpbnRzYXRwbGF5IiwiYSI6ImNqa3pkYnA1YTBxbmQzdm53eGhkYjN5MGcifQ.7u0RkaZJuHoVqehdXgGxdA'
+      token: 'pk.eyJ1IjoiaGFmc2FrYW1yYW4iLCJhIjoiY2tyYWt5NzV0M2Z4MjJwcnhydHZ3ZGtzciJ9.xnoI-XrTfDlJq1dGXxULcw'
     },
     storage: {
       countries: 'countriesObj',
