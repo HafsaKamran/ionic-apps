@@ -72,7 +72,7 @@ export class ManagerService {
     return this.storage
     .get(this.countryKey)
     .then((countriesObj: Array<Country>) => {
-      if (countriesObj.length === 0) {
+      if (countriesObj === null) {
         const countries: Array<Country> = this.places.getCountriesFromJSON();
         this.addToStorage(this.countryKey, countries);
         return countries;
@@ -99,7 +99,7 @@ export class ManagerService {
     return this.storage
     .get(this.locationsKey)
     .then((locationsObj: Array<Location>) => {
-      if (locationsObj.length === 0) {
+      if (locationsObj === null) {
         const locations: Array<Location> = this.places.getLocationsFromJSON();
         this.addToStorage(this.locationsKey, locations);
         return locations;
