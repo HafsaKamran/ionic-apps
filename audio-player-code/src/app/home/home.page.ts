@@ -248,26 +248,26 @@ export class HomePage {
    * @memberof HomePage
    */
   public tracks: Array<{artist: string, name: string, track: string}>     = [
-    {
-       artist  : 'De/vision',
-       name    : 'Until the end of time',
-       track   : '/assets/tracks/until-the-end-of-time.mp3'
-    },
-    {
-       artist  : 'Rollins Band',
-       name    : 'Shame',
-       track   : '/assets/tracks/shame.mp3'
-    },
-    {
-       artist  : 'Eleven Pond',
-       name    : 'Watching Trees',
-       track   : '/assets/tracks/watching-trees.mp3'
-    },
-    {
-       artist  : 'New Model Army',
-       name    : 'Angry Planet',
-       track   : '/assets/tracks/angry-planet.mp3'
-    },
+    // {
+    //    artist  : 'De/vision',
+    //    name    : 'Until the end of time',
+    //    track   : '/assets/tracks/until-the-end-of-time.mp3'
+    // },
+    // {
+    //    artist  : 'Rollins Band',
+    //    name    : 'Shame',
+    //    track   : '/assets/tracks/shame.mp3'
+    // },
+    // {
+    //    artist  : 'Eleven Pond',
+    //    name    : 'Watching Trees',
+    //    track   : '/assets/tracks/watching-trees.mp3'
+    // },
+    // {
+    //    artist  : 'New Model Army',
+    //    name    : 'Angry Planet',
+    //    track   : '/assets/tracks/angry-planet.mp3'
+    // },
     {
        artist  : 'Jim Hall',
        name    : 'Explosions in the sky',
