@@ -1,0 +1,31 @@
+<ion-header> 
+  <ion-toolbar>
+    <ion-title>
+      Ionic Navigation methods
+    </ion-title> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  <ion-list>
+    <ion-list-header>
+      <ion-label>By Navigate URL Method</ion-label>
+    </ion-list-header> 
+    <ion-item
+      *ngFor="let ebook of ebooks" 
+      (click)="viewEbookDetailsByNavigateUrl(ebook.id)"> 
+      {{ ebook.title }}
+    </ion-item>
+  </ion-list>
+  
+  <ion-list> 
+    <ion-list-header>
+      <ion-label>By Navigate Method</ion-label>
+    </ion-list-header> 
+    <ion-item
+      *ngFor="let ebook of ebooks" 
+      (click)="viewEbookDetailsByNavigate(ebook.id)"> 
+      {{ ebook.title }}
+    </ion-item> 
+  </ion-list>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "ebook-navigation",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
