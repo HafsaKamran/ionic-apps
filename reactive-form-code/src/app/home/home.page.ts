@@ -38,7 +38,7 @@ export class HomePage {
     */
    constructor(public fb: FormBuilder) {
       this.form 		= fb.group({
-        name 		: ['', [Validators.required, Validators.minLength(4)]],
+        name 		: ['', [Validators.required, Validators.minLength(3)]],
         email		: ['', [Validators.required, Validators.email]],
         platform 	: ['', Validators.required]
       });
