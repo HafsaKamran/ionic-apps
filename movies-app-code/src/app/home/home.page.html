@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My Fave Films
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form 
+    [formGroup]="form"
+    (ngSubmit)="saveMovie(form.value)">
+    <ion-list>
+      <ion-item margin-bottom>
+      <ion-label>Title</ion-label>
+      <ion-input 
+          type="text"          
+          [formControl]="form.controls['movieName']"></ion-input>
+      </ion-item>
+
+      <ion-button
+        type="submit"
+        expand="block"
+        color="primary"
+        class="ion-text-center"
+        [disabled]="!form.valid">Save Movie</ion-button>
+    </ion-list>
+  </form>
+
+
+
+  <ion-list *ngIf="isData">
+    <ion-list-header>
+      Your saved movies
+      <ion-button
+        type="submit"
+        expand="block"
+        color="primary"
+        class="ion-text-center"
+        (click)="clear()">Clear All</ion-button>
+    </ion-list-header>
+    <ion-item *ngFor="let data of storedData">
+      {{ data.movie }}
+      <ion-button
+        slot="end"
+        type="submit"
+        expand="block"
+        color="primary"
+        class="ion-text-center"
+        (click)="remove(data.movie)">Remove</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
