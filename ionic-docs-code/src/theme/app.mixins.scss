@@ -1,0 +1,64 @@
+/// Generates CSS3 transitions for all supporting browsers
+/// @name transition
+/// @access public
+/// @param {String}  $args The transition arguments (I.e. property to be 
+/// affected, duration of transition, type of transition)
+/// @author Saints at Play Limited
+/// @example 
+///   @include transition(color .5s ease);
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -ms-transition: $args;	
+  transition: $args;
+}
+
+/// Generates a border radius effect around all edges of an HTML element
+/// @name borderRadiusFull
+/// @access public
+/// @param {Number | String}   $sizeValue   The radius value (including pixels /// suffix) 
+/// @author Saints at Play Limited
+/// @example 
+///   @include borderRadiusFull(5px);
+@mixin borderRadiusFull($radii) {
+	-webkit-border-radius: $radii;
+	border-radius: $radii;
+}
+
+/// Generates a border radius effect along the top of an HTML element
+/// Supports -webkit prefixes as well as W3C standards compliant syntax
+///
+/// @name topBorderRadius
+/// @access public
+/// @param {Number | String} 				$sizeValue					The radius value (including pixels suffix) 
+/// @author Saints at Play Limited
+/// @example 
+///   @include topBorderRadius(5px);
+@mixin topBorderRadius($radii){
+	-webkit-border-radius:$radii $radii 0 0; 
+	border-radius:$radii $radii 0 0;
+}
+
+/// Generates a border radius effect along the bottom of an HTML element
+/// Supports -webkit prefixes as well as W3C standards compliant syntax
+/// @name bottomBorderRadius
+/// @access public
+/// @param {Number | String} 				$sizeValue					The radius value (including pixels suffix) 
+/// @author Saints at Play Limited
+/// @example 
+///   @include bottomBorderRadius(5px);
+@mixin bottomBorderRadius($radii){
+	-webkit-border-radius:0 0 $radii $radii; 
+	border-radius:0 0 $radii $radii;
+}
+
+/// Allows an image to be responsive across desktop, tablet & mobile views
+/// @name makeImageResponsive
+/// @access public
+/// @author Saints at Play Limited
+/// @example 
+///   @include makeImageResponsive();
+@mixin makeImageResponsive() {
+	display:block;
+	width:100%;
+	max-width:100%;
+}

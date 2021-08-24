@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Travel Gallery
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="background" [class.isActive]="isActive"></div>
+  <ul class="gallery">
+   <li *ngFor="let item of items" (click)="togglePanel(item)">
+           <img src="{{ item.thumbnail }}" alt="{{ item.description }}">
+           <p>{{ item.title }}</p>
+        </li>
+    </ul>
+
+    <section class="panel">	
+       <section class="inner">
+          <span class="close-panel" (click)="togglePanel()">X Close</span>
+          <h1>{{ panelTitle }}</h1>
+          <img src="{{ panelImage }}">
+          <p>{{ panelDesc }}</p>
+       </section>
+    </section>
+
+</ion-content>
