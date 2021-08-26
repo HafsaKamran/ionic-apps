@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,10 +18,11 @@ import { AppRoutingModule } from './app-routing.module';
             BrowserAnimationsModule,
             HttpClientModule,
             IonicModule.forRoot(),
+            HttpClientInMemoryWebApiModule.forRoot(
+              InMemoryDataService, { dataEncapsulation: false }
+            ),
             AppRoutingModule],
   providers: [
-    StatusBar,
-    SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

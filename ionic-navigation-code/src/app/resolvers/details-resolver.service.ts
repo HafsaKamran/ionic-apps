@@ -18,7 +18,7 @@ export class DetailsResolverService implements Resolve<any> {
    * @description       Defines the remote URI path for the application
    */
   // private uri = 'http://www.some-remote-url.suffix/';
-  private uri = 'https://www.masteringionic.com/project-examples/navigation/routing/';
+  private uri = 'api/';
 
 
   constructor(private http: HttpClient,
