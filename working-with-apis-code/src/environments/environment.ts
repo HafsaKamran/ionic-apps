@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   keys: {
     api: {
-      spoonacular: 'a6f24909bba14bd09fb8d4b7bea69e90'
+      spoonacular: '{{spoonacular-api-key}}'
     }
   }
 };
