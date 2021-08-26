@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   keys: {
     api: {
-      movieDb: '711135627b88fbde1290b7bc5556948a'
+      movieDb: '{{tmdb_api_key}}'
     },
     storage: {
       myMovies: 'MyFavouriteMovies'
