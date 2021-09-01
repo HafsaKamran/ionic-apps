@@ -124,7 +124,7 @@ export class UtilitiesService {
    * @memberof UtilitiesService
    */
   public hidePreloader(): void {
-     this.loader.dismissAll();
+     this.loader.dismiss();
   }
 
 
