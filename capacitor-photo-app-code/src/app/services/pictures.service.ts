@@ -12,7 +12,7 @@
  * @packageDocumentation
  */
 import { Injectable } from '@angular/core';
-import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { DomSanitizer } from '@angular/platform-browser';
 
 /**
@@ -22,7 +22,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   providedIn: 'root'
 })
 export class PicturesService {
-
 
   /**
    * @constructor
@@ -42,7 +41,7 @@ export class PicturesService {
    * @memberof PicturesService
    */
   public async selectImageWithCamera(): Promise<any> {
-    const image: any = await Plugins.Camera.getPhoto({
+    const image: any = await Camera.getPhoto({
       quality: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl,
@@ -61,7 +60,7 @@ export class PicturesService {
    * @memberof PicturesService
    */
   public async selectPhotoFromLibrary(): Promise<any> {
-    const image: any = await Plugins.Camera.getPhoto({
+    const image: any = await Camera.getPhoto({
       quality: 100,
       allowEditing: false,
       resultType: CameraResultType.Uri
