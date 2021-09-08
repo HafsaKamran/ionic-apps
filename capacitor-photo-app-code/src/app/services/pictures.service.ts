@@ -63,9 +63,9 @@ export class PicturesService {
     const image: any = await Camera.getPhoto({
       quality: 100,
       allowEditing: false,
-      resultType: CameraResultType.Uri
+      resultType: CameraResultType.DataUrl
     });
-    return image.webPath;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
   }
 
 
