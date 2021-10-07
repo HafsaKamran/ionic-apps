@@ -1,7 +1,0 @@
-{
-  "name": "audio-player",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
